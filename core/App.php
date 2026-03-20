@@ -1,7 +1,7 @@
 <?php 
 
 class App {
-    protected $controller = 'homeController';
+    protected $controller = 'HomeController';
     protected $method = 'index';
     protected $params = [];
 
@@ -9,10 +9,10 @@ class App {
         $url = $this->parseUrl();
 
         // Vérifier si le contrôleur existe
-        if (file_exists('../app/controllers/' . $url[0] . '.php')) {
+        /*if (file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
             unset($url[0]);
-        }
+        }*/
 
         // Inclure le contrôleur et l'instancier
         require_once '../app/controllers/' . $this->controller . '.php';

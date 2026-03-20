@@ -3,12 +3,14 @@
 class Controller {
     // Charger un modèle
     public function model($model) {
-        require_once '../app/models/' . $model . '.php';
-        return new $model();
+
+        $db = new Database();
+        return new $model($db);
     }
 
     // Charger une vue
     public function view($view, $data = []) {
+        extract($data);
         require_once '../app/views/' . $view . '.php';
     }
 }

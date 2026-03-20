@@ -1,43 +1,48 @@
 <?php 
 
+//use PDO;
+//use Exception;
+
 class Database {
-    private $host = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $dbname = 'lazycooking';
 
-    private $dbh;
-    private $stmt;
+    protected $connection;
+    protected $request;
 
+    const SERVER   = "localhost";
+    const USER     = "root";
+    const PASSWORD = "";
+    const BASE     = "lazycook";
+    
     public function __construct() {
-        // Connexion à la base de données
-        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
 
         try {
-            $this->dbh = new PDO($dsn, $this->username, $this->password);
-            $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        } catch (PDOException $e) {
-
-            die('Erreur de connexion : ' . $e->getMessage());
+            $this->connection = new PDO('mysql:host=' . self::SERVER . ';dbname=' . self::BASE, self::USER, self::PASSWORD);
+            /* On active les erreurs PDO */ 
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            /* Les retours de requête seront en tableau objet par défaut */ 
+            $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+            /* Encodage des caractères spéciaux en utf-8 */ 
+            $this->connection->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES utf8");
+            } catch (Exception $e) {
+                die('Erreur : ' . $e->getMessage()); 
         }
-    }   
+    }
 
     public function query($sql) {
-        $this->stmt = $this->dbh->prepare($sql);
+        $this->request = $this->connection->prepare($sql);
     }
 
     public function execute($params = []) {
-        return $this->stmt->execute($params);
+        return $this->request->execute($params);
     }
 
-    public function resultSet() {
+    public function fetchAll() {
         $this->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $this->request->fetchAll();
     }
 
-    public function single() {
+    public function fetch() {
         $this->execute();
-        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->request->fetch();
     }
 }
