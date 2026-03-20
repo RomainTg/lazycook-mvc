@@ -6,9 +6,11 @@
     <title><?= $title ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
-<body>
+
+<body class="d-flex flex-column min-vh-100">
+
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e78277;">
     <div class="container">
       <a class="navbar-brand" href="index.php">Recettes de la flemme</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -24,13 +26,15 @@
     </div>
   </nav>
 
+  <main>
+
   <div class="container mt-5">
-  <h2>Choisir un ingrédient</h2>
+  <h2>Choisis tes ingrédients</h2>
 
   <div class="dropdown">
       <!-- Bouton du dropdown -->
       <button class="btn btn-primary dropdown-toggle" type="button" id="ingredientsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          Sélectionner un ingrédient
+          Sélectionner les ingrédients
       </button>
       <ul class="dropdown-menu" style="max-height:200px; overflow-y:auto;">
         <?php foreach($ingredients as $ingredient): ?>
@@ -38,10 +42,12 @@
         <?php endforeach; ?>
     </ul>
   </div>
+  
+  </main>
 
   <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3 mt-5">
-      &copy; <?= date('Y') ?> ABC. Tous droits réservés.
+  <footer class="text-white text-center py-3 mt-auto" style="background-color: #e78277;">
+      &copy; <?= date('Y') ?> Romain Tang. Tous droits réservés.
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
