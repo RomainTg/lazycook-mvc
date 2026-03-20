@@ -18,8 +18,8 @@
       </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="/lazycooking/public/index">Accueil</a></li>
-          <li class="nav-item"><a class="nav-link" href="/lazycooking/public/RecipesController">Recettes</a></li>
+          <li class="nav-item"><a class="nav-link" href="/lazycooking/public/index">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/lazycooking/public/RecipesController">Recettes</a></li>
           <li class="nav-item"><a class="nav-link" href="/lazycooking/public/contact">Contact</a></li>
         </ul>
       </div>
@@ -29,20 +29,8 @@
   <main>
 
   <div class="container mt-5">
-  <h2>Choisis tes ingrédients</h2>
+  <h2>Nos recettes de flemmard(e)s </h2>
 
-  <div class="dropdown">
-      <!-- Bouton du dropdown -->
-      <button class="btn btn-primary dropdown-toggle" type="button" id="ingredientsDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #ee5f4f; border-color: #e78277;">
-          Sélectionner les ingrédients
-      </button>
-      <ul class="dropdown-menu" style="max-height:200px; overflow-y:auto;">
-        <?php foreach($ingredients as $ingredient): ?>
-            <li><a class="dropdown-item" href="#"><?= htmlspecialchars($ingredient->name) ?></a></li>
-        <?php endforeach; ?>
-    </ul>
-  </div>
-  
   </main>
 
   <!-- Footer -->
