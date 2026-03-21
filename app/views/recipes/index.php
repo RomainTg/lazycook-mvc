@@ -41,7 +41,7 @@
                   <img src="<?= htmlspecialchars($recipe->image) ?>" class="card-img-top" alt="<?= htmlspecialchars($recipe->title) ?>">
                 <?php else : ?>
                   <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height:200px; border-radius: 12px 12px 0 0;">
-                    <span style="font-size: 3rem;">🍽️</span>
+                    <span style="font-size: 5rem;">🍽️</span>
                   </div>
                 <?php endif; ?>
  

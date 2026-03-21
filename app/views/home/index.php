@@ -31,17 +31,40 @@
   <div class="container mt-5">
   <h2>Choisis tes ingrédients</h2>
 
+  <div class="d-flex gap-3 flex-wrap">
+
+  <!-- Dropdown 1 : Catégories -->
   <div class="dropdown">
-      <!-- Bouton du dropdown -->
-      <button class="btn btn-primary dropdown-toggle" type="button" id="ingredientsDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #ee5f4f; border-color: #e78277;">
-          Sélectionner les ingrédients
-      </button>
-      <ul class="dropdown-menu" style="max-height:200px; overflow-y:auto;">
-        <?php foreach($ingredients as $ingredient): ?>
-            <li><a class="dropdown-item" href="#"><?= htmlspecialchars($ingredient->name) ?></a></li>
-        <?php endforeach; ?>
+    <button class="btn btn-primary dropdown-toggle" type="button" id="categoriesDropdown"
+      data-bs-toggle="dropdown" aria-expanded="false"
+      style="background-color: #ee5f4f; border-color: #e78277;">
+      Sélectionne une catégorie
+    </button>
+    <ul class="dropdown-menu" style="max-height:200px; overflow-y:auto;">
+      <?php foreach($categories as $category): ?>
+        <li>
+          <a class="dropdown-item category-item" href="#"
+            data-id="<?= $category->id ?>"
+            data-name="<?= htmlspecialchars($category->name) ?>">
+            <?= htmlspecialchars($category->name) ?>
+          </a>
+        </li>
+      <?php endforeach; ?>
     </ul>
   </div>
+
+  <!-- Dropdown 2 : Ingrédients (caché par défaut) -->
+  <div class="dropdown" id="ingredientsDropdownWrapper" style="display:none;">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="ingredientsDropdown"
+      data-bs-toggle="dropdown" aria-expanded="false"
+      style="background-color: #ee5f4f; border-color: #e78277;">
+      Sélectionne un ingrédient
+    </button>
+    <ul class="dropdown-menu" id="ingredientsList" style="max-height:200px; overflow-y:auto;">
+    </ul>
+  </div>
+
+</div>
   
   </main>
 
@@ -50,6 +73,7 @@
       &copy; <?= date('Y') ?> Romain Tang. Tous droits réservés.
   </footer>
 
+  <script src="../public/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

@@ -45,4 +45,9 @@ class Database {
         $this->execute();
         return $this->request->fetch();
     }
+
+    public function fetchAllWithParams($params = []) {
+        $this->execute($params);
+        return $this->request->fetchAll();
+    }
 }

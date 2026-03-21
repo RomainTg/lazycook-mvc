@@ -1,15 +1,24 @@
 <?php 
 
-require_once '../app/models/Ingredient.php';
+require_once '../app/models/categories.php';
 
 class HomeController extends Controller {
 
     public function index() {
-        $ingredientModel = $this->model('Ingredient'); // crée $db et le passe au model
-        $ingredients = $ingredientModel->getAllIngredients();
+        $categoryModel = $this->model('Category');
+        $categories = $categoryModel->getAllCategories();
         $this->view('home/index', [
-            'ingredients' => $ingredients,
-            'title' => 'Recettes de la flemme'
-            ]);
+            'title'      => 'Accueil',
+            'categories' => $categories
+        ]);
+    }
+
+    public function getIngredients() {
+        header('Content-Type: application/json');
+        $categoryId = isset($_GET['category_id']) ? (int)$_GET['category_id'] : 0;
+        $categoryModel = $this->model('Category');
+        $ingredients = $categoryModel->getIngredientsByCategory($categoryId);
+        echo json_encode($ingredients);
+        exit;
     }
 }
