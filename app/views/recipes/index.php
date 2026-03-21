@@ -29,8 +29,54 @@
   <main>
 
   <div class="container mt-5">
-  <h2>Nos recettes de flemmard(e)s </h2>
+    <h2>Nos recettes de flemmard(e)s </h2>
 
+    <?php if (!empty($recipes)) : ?>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          <?php foreach ($recipes as $recipe) : ?>
+            <div class="col">
+              <div class="card h-100">
+ 
+                <?php if (!empty($recipe->image)) : ?>
+                  <img src="<?= htmlspecialchars($recipe->image) ?>" class="card-img-top" alt="<?= htmlspecialchars($recipe->title) ?>">
+                <?php else : ?>
+                  <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height:200px; border-radius: 12px 12px 0 0;">
+                    <span style="font-size: 3rem;">🍽️</span>
+                  </div>
+                <?php endif; ?>
+ 
+                <div class="card-body d-flex flex-column">
+                  <?php if (!empty($recipe->category)) : ?>
+                    <span class="badge badge-category mb-2 align-self-start"><?= htmlspecialchars($recipe->category) ?></span>
+                  <?php endif; ?>
+ 
+                  <h5 class="card-title"><?= htmlspecialchars($recipe->title) ?></h5>
+ 
+                  <?php if (!empty($recipe->description)) : ?>
+                    <p class="card-text text-muted flex-grow-1"><?= htmlspecialchars($recipe->description) ?></p>
+                  <?php endif; ?>
+ 
+                  <div class="d-flex justify-content-right align-items-center mt-3">
+                    <?php if (!empty($recipe->cooking_time)) : ?>
+                      <small class="text-muted">⏱️ <?= htmlspecialchars($recipe->cooking_time) ?> min</small>
+                    <?php endif; ?>
+                    <a href="/lazycooking/public/recipes/<?= $recipe->id ?>" style="display: inline-flex; align-items: center; gap: 4px; background: none; border: none; color: #e78277; font-size: 13px; font-weight: 500; text-decoration: none; padding: 0; margin-left: auto;">
+                      Voir la recette
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#e78277" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                  </div>
+                </div>
+ 
+              </div>
+            </div>
+          <?php endforeach; ?>
+        </div>
+ 
+      <?php else : ?>
+        <div class="alert alert-info mt-4">Aucune recette disponible pour le moment.</div>
+      <?php endif; ?>
+ 
+    </div>
   </main>
 
   <!-- Footer -->
