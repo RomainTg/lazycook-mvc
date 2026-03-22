@@ -60,7 +60,7 @@
                     <?php if (!empty($recipe->cooking_time)) : ?>
                       <small class="text-muted">⏱️ <?= htmlspecialchars($recipe->cooking_time) ?> min</small>
                     <?php endif; ?>
-                    <a href="/lazycooking/public/recipes/<?= $recipe->id ?>" style="display: inline-flex; align-items: center; gap: 4px; background: none; border: none; color: #e78277; font-size: 13px; font-weight: 500; text-decoration: none; padding: 0; margin-left: auto;">
+                    <a href="/lazycooking/public/RecipesController/showRecipe/<?= $recipe->id ?>" style="display: inline-flex; align-items: center; gap: 4px; background: none; border: none; color: #e78277; font-size: 13px; font-weight: 500; text-decoration: none; padding: 0; margin-left: auto;">
                       Voir la recette
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#e78277" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>

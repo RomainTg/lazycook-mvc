@@ -1,7 +1,7 @@
 <?php 
 
-//use PDO;
-//use Exception;
+use PDO;
+use Exception;
 
 class Database {
 
@@ -50,4 +50,9 @@ class Database {
         $this->execute($params);
         return $this->request->fetchAll();
     }
+
+    public function fetchWithParams($params = []) {
+    $this->execute($params);
+    return $this->request->fetch();
+}
 }

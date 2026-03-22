@@ -11,4 +11,13 @@ class RecipesController extends Controller {
             'recipes' => $recipes
         ]);
     }
+
+    public function showRecipe($id) {
+    $recipeModel = $this->model('Recipes');
+    $recipe = $recipeModel->getRecipeById($id);
+    $this->view('recipes/showRecipe', [
+        'title'  => $recipe->title,
+        'recipe' => $recipe
+    ]);
+}
 }
