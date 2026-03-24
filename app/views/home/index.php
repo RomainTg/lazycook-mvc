@@ -12,7 +12,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e78277;">
     <div class="container">
-      <a class="navbar-brand" href="index.php">Recettes de la flemme</a>
+      <a class="navbar-brand" href="/lazycooking/public/index">Recettes de la flemme</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,42 +29,50 @@
   <main>
 
   <div class="container mt-5">
-  <h2>Choisis tes ingrédients</h2>
+    <h1>Bienvenue sur recettes de la flemme !</h1>
+    <p class="lead">Découvre des recettes simples et rapides pour les jours où tu n'as pas envie de passer des heures en cuisine.<br>
+    Parce que oui ! La flemme c'est contagieux.</p>
+    <p class="lead fw-semibold">Le concept est simple :</p>
+    <p class="lead">Tu sélectionnes une catégorie d'ingrédients, puis un ingrédient spécifique, et hop !<br>
+      Tu obtiens une liste de recettes qui utilisent cet ingrédient. C'est parfait pour trouver l'inspiration quand tu ne sais 
+      pas quoi cuisiner avec ce que tu as sous la main.</p>
+  </div>
+
+  <div class="container mt-5">
+  <h2 class="mb-3">Choisis tes ingrédients :</h2>
 
   <div class="d-flex gap-3 flex-wrap">
+    <!-- Dropdown 1 : Catégories -->
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="categoriesDropdown"
+        data-bs-toggle="dropdown" aria-expanded="false"
+        style="background-color: #ee5f4f; border-color: #e78277;">
+        Sélectionne une catégorie
+      </button>
+      <ul class="dropdown-menu" style="max-height:200px; overflow-y:auto;">
+        <?php foreach($categories as $category): ?>
+          <li>
+            <a class="dropdown-item category-item" href="#"
+              data-id="<?= $category->id ?>"
+              data-name="<?= htmlspecialchars($category->name) ?>">
+              <?= htmlspecialchars($category->name) ?>
+            </a>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
 
-  <!-- Dropdown 1 : Catégories -->
-  <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" id="categoriesDropdown"
-      data-bs-toggle="dropdown" aria-expanded="false"
-      style="background-color: #ee5f4f; border-color: #e78277;">
-      Sélectionne une catégorie
-    </button>
-    <ul class="dropdown-menu" style="max-height:200px; overflow-y:auto;">
-      <?php foreach($categories as $category): ?>
-        <li>
-          <a class="dropdown-item category-item" href="#"
-            data-id="<?= $category->id ?>"
-            data-name="<?= htmlspecialchars($category->name) ?>">
-            <?= htmlspecialchars($category->name) ?>
-          </a>
-        </li>
-      <?php endforeach; ?>
-    </ul>
+    <!-- Dropdown 2 : Ingrédients (caché par défaut) -->
+    <div class="dropdown" id="ingredientsDropdownWrapper" style="display:none;">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="ingredientsDropdown"
+        data-bs-toggle="dropdown" aria-expanded="false"
+        style="background-color: #ee5f4f; border-color: #e78277;">
+        Sélectionne un ingrédient
+      </button>
+      <ul class="dropdown-menu" id="ingredientsList" style="max-height:200px; overflow-y:auto;">
+      </ul>
+    </div>
   </div>
-
-  <!-- Dropdown 2 : Ingrédients (caché par défaut) -->
-  <div class="dropdown" id="ingredientsDropdownWrapper" style="display:none;">
-    <button class="btn btn-primary dropdown-toggle" type="button" id="ingredientsDropdown"
-      data-bs-toggle="dropdown" aria-expanded="false"
-      style="background-color: #ee5f4f; border-color: #e78277;">
-      Sélectionne un ingrédient
-    </button>
-    <ul class="dropdown-menu" id="ingredientsList" style="max-height:200px; overflow-y:auto;">
-    </ul>
-  </div>
-
-</div>
   
   </main>
 

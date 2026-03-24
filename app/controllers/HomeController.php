@@ -21,4 +21,25 @@ class HomeController extends Controller {
         echo json_encode($ingredients);
         exit;
     }
+
+    public function searchRecipes() {
+        $ids = isset($_GET['ingredient_ids']) ? $_GET['ingredient_ids'] : '';
+
+        // Validation : uniquement des entiers séparés par virgules
+        $ingredientIds = array_filter(
+            array_map('intval', explode(',', $ids)),
+            fn($id) => $id > 0
+        );
+
+        $recipes = [];
+        if (!empty($ingredientIds)) {
+            $recipeModel = $this->model('Recipe');
+            $recipes = $recipeModel->getRecipesByIngredients($ingredientIds);
+        }
+
+        $this->view('home/results', [
+            'title'   => 'Résultats',
+            'recipes' => $recipes
+        ]);
+    }
 }
