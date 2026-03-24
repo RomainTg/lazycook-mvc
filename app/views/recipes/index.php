@@ -32,7 +32,7 @@
     <h2>Nos recettes de flemmard(e)s </h2>
 
     <?php if (!empty($recipes)) : ?>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2 mb-5">
           <?php foreach ($recipes as $recipe) : ?>
             <div class="col">
               <div class="card h-100">

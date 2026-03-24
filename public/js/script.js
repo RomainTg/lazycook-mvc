@@ -64,7 +64,7 @@ function renderSelectedIngredients() {
   }
 
 container.innerHTML = `
-  <div class="d-flex align-items-center gap-3 mb-2">
+  <div class="d-flex align-items-baseline gap-3 mb-2">
     <h5 class="mb-0">Ingrédients sélectionnés (${selectedIngredients.length}/5) :</h5>
     <button type="button" id="clearAllBtn" class="btn btn-sm btn-outline-danger">
       ✕ Tout effacer

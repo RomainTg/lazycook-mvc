@@ -42,7 +42,7 @@
             <div class="col">
               <div class="card h-100 shadow-sm border-0">
                 <div class="card-body">
-                  <h5 class="card-title"><?= htmlspecialchars($recipe->name) ?></h5>
+                  <h5 class="card-title"><?= htmlspecialchars($recipe->title) ?></h5>
                   <span class="badge mb-2" style="background-color:#ee5f4f;">
                     <?= $recipe->match_count ?> ingrédient(s) en commun
                   </span>
@@ -51,7 +51,7 @@
                   </p>
                 </div>
                 <div class="card-footer bg-white border-0">
-                  <a href="/lazycooking/public/RecipesController/show?id=<?= $recipe->id ?>"
+                  <a href="/lazycooking/public/RecipesController/showRecipe/<?= $recipe->id ?>"
                      class="btn btn-sm" style="background-color:#ee5f4f; color:white; border-color:#ee5f4f;">
                     Voir la recette →
                   </a>

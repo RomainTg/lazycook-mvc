@@ -52,7 +52,12 @@ class Database {
     }
 
     public function fetchWithParams($params = []) {
-    $this->execute($params);
-    return $this->request->fetch();
-}
+        $this->execute($params);
+        return $this->request->fetch();
+    }
+
+    public function fetchAllWithIndexedParams($params = []) {
+        $this->execute($params);
+        return $this->request->fetchAll();
+    }
 }

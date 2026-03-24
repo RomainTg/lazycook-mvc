@@ -34,7 +34,7 @@
     Parce que oui ! La flemme c'est contagieux.</p>
     <p class="lead fw-semibold">Le concept est simple :</p>
     <p class="lead">Tu sélectionnes une catégorie d'ingrédients, puis un ingrédient spécifique, et hop !<br>
-      Tu obtiens une liste de recettes qui utilisent cet ingrédient. C'est parfait pour trouver l'inspiration quand tu ne sais 
+      Tu obtiens une liste de recettes qui utilisent ce(s) ingrédient(s).<br> C'est parfait pour trouver l'inspiration quand tu ne sais 
       pas quoi cuisiner avec ce que tu as sous la main.</p>
   </div>
 

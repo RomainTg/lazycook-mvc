@@ -1,6 +1,7 @@
 <?php 
 
 require_once '../app/models/categories.php';
+require_once '../app/models/recipes.php';
 
 class HomeController extends Controller {
 
@@ -33,7 +34,7 @@ class HomeController extends Controller {
 
         $recipes = [];
         if (!empty($ingredientIds)) {
-            $recipeModel = $this->model('Recipe');
+            $recipeModel = $this->model('Recipes');
             $recipes = $recipeModel->getRecipesByIngredients($ingredientIds);
         }
 

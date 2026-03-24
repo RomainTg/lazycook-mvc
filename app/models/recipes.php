@@ -1,6 +1,6 @@
 <?php 
 
-class Recipes{
+class Recipes {
 
     private $db;
 
@@ -18,9 +18,10 @@ class Recipes{
         return $this->db->fetchWithParams(['id' => $id]);
     }
 
-    public function getRecipesByIngredientId($ingredientId) {
+    public function getRecipesByIngredients($ingredientIds) {
         if (empty($ingredientIds)) {
-        return [];
+            return [];
+        }
 
         $placeholders = implode(',', array_fill(0, count($ingredientIds), '?'));
         
@@ -29,10 +30,9 @@ class Recipes{
                             JOIN recipe_ingredients ri ON r.id = ri.recipe_id
                             WHERE ri.ingredient_id IN ($placeholders)
                             GROUP BY r.id
-                            ORDER BY match_count DESC, r.name ASC
+                            ORDER BY match_count DESC, r.title ASC
                         ");
 
         return $this->db->fetchAllWithIndexedParams($ingredientIds);
-        }
     }
-}
+} 
